@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import fakedata from './fake data/users';
+import Userinfo from './components/Userinfo';
+import Cart from './components/Cart';
 
 function App() {
+  const [userinfo, setUserinfo] = useState(fakedata)
+
+  const [usercart, setUsercart] = useState([])
+
+  const handleAddUser = (user) => { // ekne user holo j button click korlam setar data and aita userinfo.js a pass hobe
+    //console.log('added', user)
+    const newUser = [...usercart, user]
+    setUsercart(newUser)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="user-container ">
+      <div className="userInfo">
+        
+        <ul>
+          {
+            userinfo.map(user => <Userinfo user={user} handleAddUser={handleAddUser} key={user.id}></Userinfo>)
+          }
+        </ul>
+      </div>
+      <div className="userCart">
+        <h1>Total Users: {userinfo.length}</h1>
+        <h3>Users added: {usercart.length}</h3>
+        <Cart cart = {usercart}></Cart> 
+      </div>
+      
     </div>
+
   );
 }
 

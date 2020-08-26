@@ -1,0 +1,17 @@
+.user-style{
+    background-color: silver;
+    border: 2px solid yellow;
+    margin: 10px;
+    padding: 10px;
+}
+
+.user-style button{
+    background-color: goldenrod;
+    border-radius: 5px;
+    border: 2px solid ;
+    width: 150px;
+    height: 30px;
+    border: gainsboro;
+    cursor: pointer;
+
+}
